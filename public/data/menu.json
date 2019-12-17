@@ -1,0 +1,39 @@
+[
+  {
+    "id": 1,
+    "name": "首页",
+    "path": "/index.jsp"
+  },
+  {
+    "id": 2,
+    "name": "笔记/教程",
+    "path": "/wiki.jsp",
+    "children": [
+      {
+        "id": 6,
+        "name": "php",
+        "path": "/wiki/php.jsp"
+      },
+      {
+        "id": 7,
+        "name": "git",
+        "path": "/wiki/git.jsp"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "留言板",
+    "path": "/guestBook.jsp"
+  },
+  {
+    "id": 4,
+    "name": "关于我们",
+    "path": "/aboutUs.jsp"
+  },
+  {
+    "id": 5,
+    "name": "联系我们",
+    "path": "/contactUs.jsp"
+  }
+]
