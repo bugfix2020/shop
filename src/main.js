@@ -6,8 +6,6 @@ import App from './App.vue'
 import router from "@/router/index";
 //引入vuex文件
 import store from "@/store";
-import network from "@/network/axios";
-network({}).then().catch();
 Vue.config.productionTip = false;
 
 new Vue({

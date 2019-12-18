@@ -9,7 +9,7 @@ export default function axios(option) {
     return new Promise((resolve, reject) => {
         // 1.创建axios的实例
         const instance = originAxios.create({
-            baseURL: 'baseURL',
+            baseURL: 'http://123.207.32.32:8000',
             timeout: 5000
         });
 
@@ -32,7 +32,7 @@ export default function axios(option) {
         //响应后拦截
         instance.interceptors.response.use(response => {
             //请求成功拦截
-            return response.data
+            return response.data;
         }, err => {
             //请求失败拦截
             if (err && err.response) {
@@ -66,5 +66,18 @@ export default function axios(option) {
         }).catch(err => {
             reject(err)
         });
-    })
+    });
+}
+
+export function allAxios(...curl) {
+    return new Promise((resolve, reject) => {
+        originAxios.all(curl)
+            .then(res => {
+                // res = res.filter(item => typeof (item.data) == 'object');
+                resolve(res);
+            })
+            .catch(err => {
+                reject(err);
+            });
+    });
 }
