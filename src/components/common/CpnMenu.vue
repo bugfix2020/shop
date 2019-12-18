@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import {getMenuData} from "@/network/index";
+    import {getMenuData} from "@/network/axios";
     import CpnMenuItem from "@/components/CpnMenuItem";
 
     export default {
