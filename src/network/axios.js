@@ -1,8 +1,8 @@
 //引入axios核心库
 import originAxios from 'axios';
 // import qs from 'qs';
-// qs.parse(data);
-// qs.stringify(data);
+// qs.parse(data);      将URL解析成对象的形式
+// qs.stringify(data);  将对象 序列化成URL的形式
 
 //导出方法
 export default function axios(option) {
