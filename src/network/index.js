@@ -1,15 +1,14 @@
-import axios, {allAxios} from "@/network/axios";
+import request , {allAxios} from "@/network/axios";
 
 //首页请求方法
 export function Fn1() {
-    return axios({
+    return request({
         url: 'url'
     });
 }
 
-
 export function Fn2() {
-    return axios({
+    return request({
         url: 'url'
     });
 }
@@ -19,10 +18,10 @@ export function Fn3() {
 }
 
 function Fn4() {
-    return axios({url: '/home/multidata'});
+    return request({url: '/home/multidata'});
 }
 
 // eslint-disable-next-line no-unused-vars
 function Fn5() {
-    return axios({url: '/home/data'});
+    return request({url: '/home/data'});
 }
