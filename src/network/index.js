@@ -18,10 +18,10 @@ export function Fn3() {
 }
 
 function Fn4() {
-    return request({url: '/home/multidata'});
+    return request({url: '/index/multidata'});
 }
 
 // eslint-disable-next-line no-unused-vars
 function Fn5() {
-    return request({url: '/home/data'});
+    return request({url: '/index/data'});
 }
