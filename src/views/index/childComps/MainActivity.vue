@@ -223,7 +223,6 @@
         color: #3696ed;
     }
 
-
     .no_task_bg {
         width: 7.5rem;
         height: 5.7rem;
@@ -313,10 +312,4 @@
     .task_list_item .main .price {
         color: #db5949;
     }
-
-    /*.switch_contain{*/
-    /*    content: '已开启';*/
-    /*    font-size: 0.1rem;*/
-    /*    line-height: 0.6rem;*/
-    /*}*/
 </style>
