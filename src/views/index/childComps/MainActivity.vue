@@ -50,6 +50,7 @@
         name: "MainActivity",
         data() {
             return {
+                transitionFlag: true,
                 isOpen: false,
                 taskNum: 0,
                 usableTaskNum: 5,
@@ -58,21 +59,37 @@
         },
         methods: {
             /**
-             * 自动抢单
+             * 自动抢单 按钮
              * @param event 浏览器event对象
              * @param init  是否通过初始化触发
              */
             transitionButton(event, init = false) {
+                //防止连击
                 if (!init) {
+                    if (!this.transitionFlag) {
+                        Toast({
+                            message: '操作过于频繁',
+                            duration: 1000
+                        });
+                        return false;
+                    }
+
+                    let that = this;
+                    that.transitionFlag = false;
+                    setTimeout(function () {
+                        that.transitionFlag = true;
+                    }, 2000);
+
                     //todo 发送请求到后端
                     this.isOpen = !this.isOpen;
                     Toast({
                         message: '操作成功',
                         iconClass: 'icon icon-success',
-                        duration: 1500
+                        duration: 1000
                     });
                 }
 
+                //操作dom开始动画
                 let button = document.getElementsByClassName('button')[0];
                 let text = document.getElementsByClassName('text')[0];
 
@@ -90,6 +107,10 @@
                     text.innerText = '已关闭';
                 }
             },
+            /**
+             * 人工抢单 列表
+             * @param id 任务id
+             */
             chooseTask(id) {
                 //todo 还不知道这里的逻辑 如果点击就锁定订单 应防止并发状态下的问题
                 Toast({
