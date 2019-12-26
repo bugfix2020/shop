@@ -1,6 +1,6 @@
 <template>
     <div id="contain">
-        <main-share></main-share>
+        <main-share @click.native="share"></main-share>
         <main-equity></main-equity>
         <main-notice :noticeData="NoticeData"></main-notice>
         <main-banner :bannerData="bannerData"></main-banner>
@@ -9,6 +9,10 @@
 </template>
 
 <script>
+    //三方UI组件
+    import {Toast} from 'mint-ui';
+
+    //自定义组件
     import MainShare from "@/views/index/childComps/MainShare";
     import MainEquity from "@/views/index/childComps/MainEquity";
     import MainNotice from "@/views/index/childComps/MainNotice";
@@ -78,6 +82,14 @@
             MainNotice,
             MainBanner,
             MainActivity
+        },
+        methods: {
+            share() {
+                Toast({
+                    message: '分享了',
+                    duration: 1000
+                });
+            }
         }
     }
 </script>
