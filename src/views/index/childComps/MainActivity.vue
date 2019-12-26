@@ -15,27 +15,29 @@
             </p>
         </div>
         <div class="task_list" v-if="haveTaskList">
-            <div class="task_list_item" v-for="item in taskData" :key="item.id">
-                <div class="title">
-                    <p>
-                        <span>{{item.source}}</span>
-                        <em>|</em>
-                        <span>{{item.type}}</span>
-                    </p>
-                    <p>发布时间:{{item.publishDate}}</p>
-                </div>
-                <div class="main">
-                    <p>
-                        <img src="@/assets/img/index/activity/cart_icon.png" alt="" class="cart_icon">
-                    </p>
-                    <p>
-                        <span class="order_number">任务编号:{{item.orderNum}}</span>
-                        <span class="order_info">
+            <div class="task_list_box" v-for="item in taskData" :key="item.id">
+                <div class="task_list_item">
+                    <div class="title">
+                        <p>
+                            <span>{{item.source}}</span>
+                            <em>|</em>
+                            <span>{{item.type}}</span>
+                        </p>
+                        <p>发布时间:{{item.publishDate}}</p>
+                    </div>
+                    <div class="main">
+                        <p>
+                            <img src="@/assets/img/index/activity/cart_icon.png" alt="" class="cart_icon">
+                        </p>
+                        <p>
+                            <span class="order_number">任务编号:{{item.orderNum}}</span>
+                            <span class="order_info">
                             商品价格<span class="price">{{item.price}}</span>元，任务佣金
                             <span class="price">{{item.reward}}</span>元
                         </span>
-                    </p>
-                    <p @click="chooseTask(item.id)">抢单</p>
+                        </p>
+                        <p @click="chooseTask(item.id)">抢单</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -228,6 +230,10 @@
     }
 
     .task_list {
+        width: 7.5rem;
+    }
+
+    .task_list_box {
         width: 7.5rem;
         border-top: 0.2rem solid #eef3f6;
     }
