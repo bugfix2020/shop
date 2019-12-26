@@ -8,12 +8,17 @@
 </template>
 
 <script>
+    import {Toast} from 'mint-ui';
+
     export default {
         name: "EquityItem",
         methods: {
             redirectTo(path) {
-                // eslint-disable-next-line no-console
-                console.log(path);
+                Toast({
+                    message: '路径' + path,
+                    iconClass: 'icon icon-success',
+                    duration: 1500
+                });
             }
         },
         props: {

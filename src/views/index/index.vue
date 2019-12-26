@@ -4,11 +4,7 @@
         <main-equity></main-equity>
         <main-notice :noticeData="NoticeData"></main-notice>
         <main-banner :bannerData="bannerData"></main-banner>
-        <div class="activity_1">
-
-        </div>
-        <el-switch v-model="isOpenActivity_1">
-        </el-switch>
+        <main-activity :taskData="taskData"></main-activity>
     </div>
 </template>
 
@@ -17,6 +13,7 @@
     import MainEquity from "@/views/index/childComps/MainEquity";
     import MainNotice from "@/views/index/childComps/MainNotice";
     import MainBanner from "@/views/index/childComps/MainBanner";
+    import MainActivity from "@/views/index/childComps/MainActivity";
 
     export default {
         name: 'index',
@@ -25,6 +22,7 @@
                 isOpenActivity_1: true,
                 NoticeData: [],
                 bannerData: [],
+                taskData: [],
             }
         },
         created() {
@@ -42,12 +40,44 @@
                 'https://img.alicdn.com/simba/img/TB1tXD7rQL0gK0jSZFASuwA9pXa.jpg',
                 'https://img.alicdn.com/simba/img/TB10KJBrKL2gK0jSZFmSuw7iXXa.jpg'
             ];
+
+            //todo task任务列表
+            this.taskData = [
+                {
+                    id: 30291,
+                    source: '拼多多任务',
+                    type: '购物',
+                    publishDate: '2019-11-15 19:21',
+                    orderNum: 20191115004056,
+                    price: 156,
+                    reward: 9
+                }
+                , {
+                    id: 30292,
+                    source: '拼多多任务',
+                    type: '购物',
+                    publishDate: '2019-11-15 19:22',
+                    orderNum: 20191115004057,
+                    price: 158,
+                    reward: 21
+                },
+                {
+                    id: 30293,
+                    source: '拼多多任务',
+                    type: '购物',
+                    publishDate: '2019-11-15 19:23',
+                    orderNum: 20191115004058,
+                    price: 988,
+                    reward: 72
+                }
+            ];
         },
         components: {
             MainShare,
             MainEquity,
             MainNotice,
-            MainBanner
+            MainBanner,
+            MainActivity
         }
     }
 </script>
@@ -55,9 +85,5 @@
 <style scoped>
     #contain {
         overflow: hidden;
-    }
-
-    .activity_1 {
-        background: url('~@/assets/img/index/activity/activity_1.png');
     }
 </style>

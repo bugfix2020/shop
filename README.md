@@ -25,8 +25,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 依赖安装
 ```
-npm i element-ui -S 
+npm i element-ui -S
 npm install vue-awesome-swiper --save
+npm install mint-ui -S
 ```
 
 
