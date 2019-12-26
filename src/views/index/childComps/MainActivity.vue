@@ -54,7 +54,6 @@
                 isOpen: false,
                 taskNum: 0,
                 usableTaskNum: 5,
-                taskList: [],
             }
         },
         methods: {
@@ -125,7 +124,7 @@
         },
         computed: {
             haveTaskList() {
-                return this.taskList.length > 0 ? true : false;
+                return this.taskData.length > 0 ? true : false;
             }
         },
         props: {
