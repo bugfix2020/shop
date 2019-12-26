@@ -17,7 +17,10 @@ const routes = [
     {
         name: 'index',
         path: '/index',
-        component: index
+        component: index,
+        meta: {
+            title: '首页'
+        }
     }
 ];
 
@@ -28,6 +31,13 @@ const mode = 'history';
 const router = new VueRouter({
     routes,
     mode,
+});
+
+//设置路由守卫
+router.beforeEach((to, from, next) => {
+    //设置头
+    document.title = to.meta.title;
+    next();
 });
 
 //导出router
