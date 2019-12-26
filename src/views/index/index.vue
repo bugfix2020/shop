@@ -1,52 +1,63 @@
 <template>
-    <equity>
-        <equity-item v-for="EquityDataItem in EquityData" :key="EquityDataItem.text" :path="EquityDataItem.path">
-            <img :src="EquityDataItem.img" slot="img">
-            <p slot="text">{{EquityDataItem.text}}</p>
-        </equity-item>
-    </equity>
+    <div id="contain">
+        <main-share></main-share>
+        <main-equity></main-equity>
+        <main-notice :noticeData="NoticeData"></main-notice>
+        <main-banner :bannerData="bannerData"></main-banner>
+        <div class="activity_1">
+
+        </div>
+        <el-switch v-model="isOpenActivity_1">
+        </el-switch>
+    </div>
 </template>
 
 <script>
-    import EquityItem from "@/views/index/childComps/EquityItem";
-    import Equity from "@/views/index/childComps/Equity";
+    import MainShare from "@/views/index/childComps/MainShare";
+    import MainEquity from "@/views/index/childComps/MainEquity";
+    import MainNotice from "@/views/index/childComps/MainNotice";
+    import MainBanner from "@/views/index/childComps/MainBanner";
 
     export default {
         name: 'index',
         data() {
             return {
-                EquityData: [
-                    {
-                        img: '~assets/1首页_r2_c2.jpg',
-                        text: '我的任务',
-                        path: ''
-                    },
-                    {
-                        img: '~assets/1首页_r2_c2.jpg',
-                        text: '安全保障',
-                        path: ''
-                    },
-                    {
-                        img: '~assets/1首页_r2_c2.jpg',
-                        text: '我的钱包',
-                        path: ''
-                    },
-                    {
-                        img: '~assets/1首页_r2_c2.jpg',
-                        text: 'VIP创客',
-                        path: ''
-                    },
-                ],
-
+                isOpenActivity_1: true,
+                NoticeData: [],
+                bannerData: [],
             }
         },
+        created() {
+            //todo Notice公告
+            this.NoticeData = [
+                '嘻唰唰平台2019年11月12日凌晨维护公告1',
+                '嘻唰唰平台2019年11月12日凌晨维护公告2',
+                '嘻唰唰平台2019年11月12日凌晨维护公告3',
+                '嘻唰唰平台2019年11月12日凌晨维护公告4'
+            ];
+
+            //todo banner图
+            this.bannerData = [
+                'https://img.alicdn.com/tfs/TB1m2FtrRr0gK0jSZFnXXbRRXXa-520-280.jpg_q90_.webp',
+                'https://img.alicdn.com/simba/img/TB1tXD7rQL0gK0jSZFASuwA9pXa.jpg',
+                'https://img.alicdn.com/simba/img/TB10KJBrKL2gK0jSZFmSuw7iXXa.jpg'
+            ];
+        },
         components: {
-            Equity,
-            EquityItem
+            MainShare,
+            MainEquity,
+            MainNotice,
+            MainBanner
         }
     }
 </script>
 
 <style scoped>
+    #contain {
+        overflow: hidden;
+    }
 
+    .activity_1 {
+        background: url('~@/assets/img/index/activity/activity_1.png');
+    }
 </style>

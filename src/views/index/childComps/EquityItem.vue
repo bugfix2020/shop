@@ -1,44 +1,44 @@
 <template>
-    <div class="chuanke_a">
-        <div class="chuanke_box">
-            <div>
-                <slot name="img"></slot>
-            </div>
-            <p>
-                <slot name="text"></slot>
-            </p>
+    <div class="equity_item" @click="redirectTo(path)">
+        <div class="img_contain">
+            <slot name="img"></slot>
         </div>
+        <slot name="text"></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: "EquityItem"
+        name: "EquityItem",
+        methods: {
+            redirectTo(path) {
+                // eslint-disable-next-line no-console
+                console.log(path);
+            }
+        },
+        props: {
+            path: {
+                type: String,
+                default: ''
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .chuanke_a {
-        display: flex;
-        justify-content: space-around;
+    .equity_item {
+        flex: 1;
     }
 
-    .chuanke_box {
-        display: flex;
-        flex-direction: column;
-        margin: 5px;
+    .equity_item .img_contain img {
+        display: block;
+        margin: 0.35rem auto 0.2rem auto;
     }
 
-    .chuanke_box img {
-        margin: auto;
-        width: 40px;
-        height: 40px;
-    }
-
-    .chuanke_box p {
-        margin: auto;
-        padding: 5px 0 5px 0;
-        color: #7D7D7D;
-        font-size: 13px;
+    .equity_item p {
+        font: 0.25rem "Microsoft YaHei";
+        color: #555;
+        text-align: center;
+        padding-bottom: 0.3rem;
     }
 </style>

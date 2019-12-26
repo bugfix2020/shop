@@ -6,14 +6,18 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 //todo 懒加载方式引入所需组件
-// const Foo = () => import('./Foo.vue');
+const index = () => import('@/views/index/index');
 
 //设置routes对象 映射路由关系
 const routes = [
     {
-        name: '首页',
+        path: '',
+        redirect: '/index'
+    },
+    {
+        name: 'index',
         path: '/index',
-        components: ''
+        component: index
     }
 ];
 
