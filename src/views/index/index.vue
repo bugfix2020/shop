@@ -43,33 +43,33 @@
 
             //todo task任务列表
             this.taskData = [
-                {
-                    id: 30291,
-                    source: '拼多多任务',
-                    type: '购物',
-                    publishDate: '2019-11-15 19:21',
-                    orderNum: 20191115004056,
-                    price: 156,
-                    reward: 9
-                }
-                , {
-                    id: 30292,
-                    source: '拼多多任务',
-                    type: '购物',
-                    publishDate: '2019-11-15 19:22',
-                    orderNum: 20191115004057,
-                    price: 158,
-                    reward: 21
-                },
-                {
-                    id: 30293,
-                    source: '拼多多任务',
-                    type: '购物',
-                    publishDate: '2019-11-15 19:23',
-                    orderNum: 20191115004058,
-                    price: 988,
-                    reward: 72
-                }
+                // {
+                //     id: 30291,
+                //     source: '拼多多任务',
+                //     type: '购物',
+                //     publishDate: '2019-11-15 19:21',
+                //     orderNum: 20191115004056,
+                //     price: 156,
+                //     reward: 9
+                // }
+                // , {
+                //     id: 30292,
+                //     source: '拼多多任务',
+                //     type: '购物',
+                //     publishDate: '2019-11-15 19:22',
+                //     orderNum: 20191115004057,
+                //     price: 158,
+                //     reward: 21
+                // },
+                // {
+                //     id: 30293,
+                //     source: '拼多多任务',
+                //     type: '购物',
+                //     publishDate: '2019-11-15 19:23',
+                //     orderNum: 20191115004058,
+                //     price: 988,
+                //     reward: 72
+                // }
             ];
         },
         components: {
