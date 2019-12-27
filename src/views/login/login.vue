@@ -2,10 +2,10 @@
     <div id="contain">
         <div id="header" class="user">
             <p>欢迎登录</p>
-            <p>嘻唰唰{{identity}}平台</p>
+            <p>嘻唰唰{{currentIdentity}}平台</p>
         </div>
         <div id="login" class="login_user" @click="redirectLogin">
-            <p>{{redirectIdentity}}登录 &gt;</p>
+            <p>{{otherIdentity}}登录 &gt;</p>
         </div>
         <div class="form">
             <div>
@@ -31,7 +31,7 @@
                 <p @click="redirectResetPassword">忘记登录密码?</p>
             </div>
         </div>
-        <p id="register" class="register_user" @click="redirectRegister">{{identity}}入驻</p>
+        <p id="register" class="register_user" @click="redirectRegister">{{currentIdentity}}入驻</p>
     </div>
 </template>
 
@@ -44,8 +44,8 @@
             return {
                 tel: '',
                 password: '',
-                identity: '创客',
-                redirectIdentity: '商户',
+                currentIdentity: '创客',
+                otherIdentity: '商户',
                 redirectCurrentUrl: 'user',
                 redirectOtherUrl: 'merchant',
                 remember: false
@@ -66,24 +66,24 @@
              * 路由 - 进入找回密码页
              */
             redirectResetPassword() {
-                this.$router.push('/resetPassword?identity=' + this.redirectCurrentUrl);
+                this.$router.replace('/resetPassword?identity=' + this.redirectCurrentUrl);
             },
             /**
              *  理由 - 进入「创客/商户」 登录页
              */
             redirectLogin() {
-                this.$router.push('/login?identity=' + this.redirectOtherUrl);
+                this.$router.replace('/login?identity=' + this.redirectOtherUrl);
             },
             /**
              *  理由 - 进入「创客/商户」 注册页
              */
             redirectRegister() {
                 //创客入驻
-                this.$router.push('/register?identity=' + this.redirectCurrentUrl);
+                this.$router.replace('/register?identity=' + this.redirectCurrentUrl);
             },
             Login() {
                 //商家登录
-                this.$router.push()
+                // this.$router.replace()
             },
             /**
              * 检查数据完整性
@@ -118,14 +118,14 @@
                 let identity = this.$route.query.identity;
                 this.redirectCurrentUrl = identity;
 
-                if (identity === 'user') {
-                    this.identity = '创客';
-                    this.redirectIdentity = '商户';
-                    this.redirectOtherUrl = 'merchant';
-                } else {
-                    this.identity = '商户';
-                    this.redirectIdentity = '创客';
+                if (identity === 'merchant') {
+                    this.currentIdentity = '商户';
+                    this.otherIdentity = '创客';
                     this.redirectOtherUrl = 'user';
+                } else {
+                    this.currentIdentity = '创客';
+                    this.otherIdentity = '商户';
+                    this.redirectOtherUrl = 'merchant';
                 }
 
                 //设置主题色

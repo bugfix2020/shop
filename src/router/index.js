@@ -38,7 +38,7 @@ const routes = [
         path: '/register',
         component: register,
         meta: {
-            title: '创客入驻'
+            title: '入驻'
         }
     },
     {

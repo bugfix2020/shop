@@ -2,7 +2,7 @@
     <div class="form">
         <div class="form_item">
             <label for="tel">手机号码</label>
-            <button id="send_sms" @click="sendSms">获取验证码{{waitTime | addText}}</button>
+            <button id="send_sms" class="send_sms_user" @click="sendSms">获取验证码{{waitTime | addText}}</button>
             <input type="tel" placeholder="请输入手机号码" id="tel" v-model.number.trim="tel">
         </div>
         <div class="form_item">
@@ -23,9 +23,9 @@
         </div>
         <label for="remember" class="remember">
             <input type="checkbox" id="remember" v-model="confirm"/>
-            <span>同意《嘻唰唰-创客加盟协议》</span>
+            <span>同意《嘻唰唰-{{currentIdentity}}加盟协议》</span>
         </label>
-        <button class="sub" @click="register">提交申请</button>
+        <button id="sub" @click="register">提交申请</button>
     </div>
 </template>
 
@@ -42,7 +42,7 @@
                 repeatPassword: '',
                 inviteCode: '',
                 confirm: false,
-                waitTime: 0
+                waitTime: 0,
             }
         },
         methods: {
@@ -81,15 +81,15 @@
                 el.style.cursor = 'not-allowed';
 
                 //指定倒计时时间
-                that.waitTime = 60;
+                that.waitTime = 1;
                 let handle = setInterval(function () {
                     that.waitTime--;
                     if (that.waitTime == 0) {
                         //倒计时结束 清除定时器
                         clearInterval(handle);
                         //恢复样式
-                        el.style.color = '#fff';
-                        el.style.backgroundColor = '#3696ed';
+                        el.className = 'send_sms_' + that.redirectCurrentUrl;
+                        el.style = null;
                         el.style.cursor = 'pointer';
                         return false;
                     }
@@ -131,6 +131,11 @@
                 }
 
                 return true;
+            },
+            __init() {
+                this.redirectCurrentUrl = this.$route.query.identity;
+                document.getElementById('send_sms').className = 'send_sms_' + this.redirectCurrentUrl;
+                document.getElementById('sub').className = 'sub_' + this.redirectCurrentUrl;
             }
         },
         filters: {
@@ -140,6 +145,15 @@
                 }
                 return '  (' + time + ')秒';
             }
+        },
+        props: {
+            currentIdentity: {
+                type: String,
+                default: ''
+            }
+        },
+        mounted() {
+            this.__init();
         }
     }
 </script>
@@ -187,8 +201,7 @@
         width: 2.2rem;
         height: 0.6rem;
         line-height: 0.6rem !important;
-        color: #fff; /*#999*/
-        background-color: #3696ed; /*#d8d8d8*/
+
         border: none;
         outline: none;
         border-radius: 0.1rem;
@@ -196,6 +209,18 @@
         margin-top: -0.06rem;
         margin-left: 0.15rem;
         cursor: pointer;
+    }
+
+    /*主题色*/
+    .send_sms_user {
+        color: #fff; /*#999*/
+        background-color: #3696ed; /*#d8d8d8*/
+    }
+
+    /*主题色*/
+    .send_sms_merchant {
+        color: #000; /*#999*/
+        background-color: #fecf29; /*#d8d8d8*/
     }
 
     .remember {
@@ -217,17 +242,27 @@
         margin-left: 0.3rem;
     }
 
-    .sub {
+    #sub {
         display: block;
         width: 5.7rem;
         height: 1rem;
         margin: 0.6rem auto 0 auto;
         line-height: 1rem !important;
-        color: #fff;
-        background-color: #3696ed;
         border: none;
         border-radius: 0.15rem;
         font: 0.33rem "Microsoft YaHei";
         outline: none;
+    }
+
+    /*主题色*/
+    .sub_user {
+        color: #fff;
+        background-color: #3696ed;
+    }
+
+    /*主题色*/
+    .sub_merchant {
+        color: #000;
+        background-color: #fecf29;
     }
 </style>
