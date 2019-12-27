@@ -46,6 +46,8 @@
                 password: '',
                 identity: '创客',
                 redirectIdentity: '商户',
+                redirectCurrentUrl: 'user',
+                redirectOtherUrl: 'merchant',
                 remember: false
             }
         },
@@ -64,24 +66,24 @@
              * 路由 - 进入找回密码页
              */
             redirectResetPassword() {
-                this.$router.push('/resetPassword');
+                this.$router.push('/resetPassword?identity=' + this.redirectCurrentUrl);
             },
             /**
              *  理由 - 进入「创客/商户」 登录页
              */
-            redirectLogin(){
-
+            redirectLogin() {
+                this.$router.push('/login?identity=' + this.redirectOtherUrl);
             },
             /**
              *  理由 - 进入「创客/商户」 注册页
              */
             redirectRegister() {
                 //创客入驻
-                this.$router.push('/register');
+                this.$router.push('/register?identity=' + this.redirectCurrentUrl);
             },
-            merchantLogin() {
+            Login() {
                 //商家登录
-                // this.$router.push()
+                this.$router.push()
             },
             /**
              * 检查数据完整性
@@ -98,30 +100,32 @@
                     return false;
                 }
 
+                let key = this.redirectCurrentUrl + 'Info';
                 if (this.remember) {
                     let data = {tel: this.tel, password: this.password};
-                    localStorage.setItem('userInfo', JSON.stringify(data));
+                    localStorage.setItem(key, JSON.stringify(data));
                 } else {
-                    localStorage.removeItem('userInfo');
+                    localStorage.removeItem(key);
                 }
 
                 return true;
             },
+            /**
+             * 页面初始化方法
+             * @private
+             */
             __init() {
                 let identity = this.$route.query.identity;
-                switch (identity) {
-                    case 'user':
-                        this.identity = '创客';
-                        this.redirectIdentity = '商户';
-                        break;
-                    case 'merchant':
-                        this.identity = '商户';
-                        this.redirectIdentity = '创客';
-                        break;
-                    default:
-                        // eslint-disable-next-line no-console
-                        console.error('未能识别的身份.');
-                        break;
+                this.redirectCurrentUrl = identity;
+
+                if (identity === 'user') {
+                    this.identity = '创客';
+                    this.redirectIdentity = '商户';
+                    this.redirectOtherUrl = 'merchant';
+                } else {
+                    this.identity = '商户';
+                    this.redirectIdentity = '创客';
+                    this.redirectOtherUrl = 'user';
                 }
 
                 //设置主题色
@@ -130,21 +134,28 @@
                 document.getElementById('sub').className = 'sub_' + identity;
                 document.getElementById('register').className = 'register_' + identity;
                 document.getElementById('login').className = 'login_' + identity;
+
+                //登录界面获取用户账号密码
+                let key = this.redirectCurrentUrl + 'Info';
+                let info = localStorage.getItem(key);
+                if (info) {
+                    let {tel, password} = JSON.parse(info);
+                    this.tel = tel;
+                    this.password = password;
+                    this.remember = true;
+                } else {
+                    this.tel = '';
+                    this.password = '';
+                    this.remember = false;
+                }
             }
         },
         mounted() {
             //初始化界面数据
             this.__init();
-            // eslint-disable-next-line no-console
-            console.log();
-
-            let userInfo = localStorage.getItem('userInfo');
-            if (userInfo) {
-                let {tel, password} = JSON.parse(userInfo);
-                this.tel = tel;
-                this.password = password;
-                this.remember = true;
-            }
+        },
+        watch: {
+            '$route': '__init'
         },
     }
 </script>
