@@ -1,11 +1,11 @@
 <template>
     <div id="contain">
-        <div id="header">
+        <div id="header" class="user">
             <p>欢迎登录</p>
-            <p>嘻唰唰创客平台</p>
+            <p>嘻唰唰{{identity}}平台</p>
         </div>
-        <div class="merchant_login" @click="merchantLogin">
-            <p>商户登录 &gt;</p>
+        <div id="login" class="login_user" @click="redirectLogin">
+            <p>{{redirectIdentity}}登录 &gt;</p>
         </div>
         <div class="form">
             <div>
@@ -25,13 +25,13 @@
                 <input type="checkbox" id="remember" v-model="remember"/>
                 <span>记住用户名和密码</span>
             </label>
-            <button class="sub" @click="login">登录</button>
+            <button id="sub" @click="login" class="sub_user">登录</button>
             <div class="other">
                 <p @click="clearCache">清理缓存</p>
                 <p @click="redirectResetPassword">忘记登录密码?</p>
             </div>
         </div>
-        <p class="register" @click="register">创客入驻</p>
+        <p id="register" class="register_user" @click="redirectRegister">{{identity}}入驻</p>
     </div>
 </template>
 
@@ -44,6 +44,8 @@
             return {
                 tel: '',
                 password: '',
+                identity: '创客',
+                redirectIdentity: '商户',
                 remember: false
             }
         },
@@ -62,17 +64,24 @@
              * 路由 - 进入找回密码页
              */
             redirectResetPassword() {
-                this.$router.push('/resetPassword')
+                this.$router.push('/resetPassword');
             },
-            register() {
+            /**
+             *  理由 - 进入「创客/商户」 登录页
+             */
+            redirectLogin(){
+
+            },
+            /**
+             *  理由 - 进入「创客/商户」 注册页
+             */
+            redirectRegister() {
                 //创客入驻
                 this.$router.push('/register');
             },
             merchantLogin() {
                 //商家登录
-                setTimeout(() => {
-                    alert('清除缓存成功')
-                }, Math.random() * 10000)
+                // this.$router.push()
             },
             /**
              * 检查数据完整性
@@ -97,9 +106,38 @@
                 }
 
                 return true;
+            },
+            __init() {
+                let identity = this.$route.query.identity;
+                switch (identity) {
+                    case 'user':
+                        this.identity = '创客';
+                        this.redirectIdentity = '商户';
+                        break;
+                    case 'merchant':
+                        this.identity = '商户';
+                        this.redirectIdentity = '创客';
+                        break;
+                    default:
+                        // eslint-disable-next-line no-console
+                        console.error('未能识别的身份.');
+                        break;
+                }
+
+                //设置主题色
+                identity = identity.toString();
+                document.getElementById('header').className = identity;
+                document.getElementById('sub').className = 'sub_' + identity;
+                document.getElementById('register').className = 'register_' + identity;
+                document.getElementById('login').className = 'login_' + identity;
             }
         },
-        created() {
+        mounted() {
+            //初始化界面数据
+            this.__init();
+            // eslint-disable-next-line no-console
+            console.log();
+
             let userInfo = localStorage.getItem('userInfo');
             if (userInfo) {
                 let {tel, password} = JSON.parse(userInfo);
@@ -107,7 +145,7 @@
                 this.password = password;
                 this.remember = true;
             }
-        }
+        },
     }
 </script>
 
@@ -122,8 +160,15 @@
         width: 100%;
         height: 3.59rem;
         margin-bottom: 0.8rem;
-        background: url("~@/assets/img/login/header_background.png") no-repeat;
         background-size: cover;
+    }
+
+    .merchant {
+        background: url("~@/assets/img/login/header_bg_merchant.png") no-repeat;
+    }
+
+    .user {
+        background: url("~@/assets/img/login/header_bg_user.png") no-repeat;
     }
 
     #contain #header p {
@@ -143,23 +188,43 @@
         font-size: 0.33rem;
     }
 
-    .merchant_login {
+    #login {
         width: 1.67rem;
         border-top-left-radius: 0.45rem;
         border-bottom-left-radius: 0.45rem;
-        background-color: #fff;
         position: absolute;
         right: 0;
         top: 0.35rem;
     }
 
-    .merchant_login p {
+    /*主题色*/
+    .login_user {
+        background-color: #fff;
+        color: #fff;
+    }
+
+    /*主题色*/
+    .login_merchant {
+        background-color: #373737;
+        color: #fecf29;
+    }
+
+    #login p {
         height: 0.64rem;
         line-height: 0.64rem !important;
-        color: #2487f7;
         font: 0.25rem "Microsoft YaHei";
         text-align: right;
         padding-right: 0.13rem;
+    }
+
+    /*主题色*/
+    .login_user p {
+        color: #2487f7;
+    }
+
+    /*主题色*/
+    .login_merchant p {
+        color: #fecf29;
     }
 
     .form {
@@ -220,18 +285,28 @@
         margin-left: 0.3rem;
     }
 
-    .sub {
+    #sub {
         display: block;
         width: 5.7rem;
         height: 1rem;
         margin: 0.6rem auto 0 auto;
         line-height: 1rem !important;
-        color: #fff;
-        background-color: #3696ed;
         border: none;
         border-radius: 0.15rem;
         font: 0.33rem "Microsoft YaHei";
         outline: none;
+    }
+
+    /*主题色*/
+    .sub_user {
+        color: #fff;
+        background-color: #3696ed;
+    }
+
+    /*主题色*/
+    .sub_merchant {
+        color: #000;
+        background-color: #fecf29;
     }
 
     .other {
@@ -256,19 +331,29 @@
         margin-right: 0.15rem;
     }
 
-    .register {
+    #register {
         width: 1.9rem;
         height: 0.75rem;
         line-height: 0.75rem !important;
         text-align: center;
         margin: 0 auto;
         font: 0.28rem "Microsoft YaHei";
-        border: 0.01rem solid #3696ed;
         border-radius: 0.25rem;
-        color: #3696ed;
         position: fixed;
         left: 2.65rem;
         cursor: pointer;
         bottom: 0.9rem;
+    }
+
+    /*主题色*/
+    .register_user {
+        border: 0.01rem solid #3696ed;
+        color: #3696ed;
+    }
+
+    /*主题色*/
+    .register_merchant {
+        border: 0.01rem solid #fecf29;
+        color: #fecf29;
     }
 </style>
