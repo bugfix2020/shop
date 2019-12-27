@@ -10,22 +10,14 @@
             <input type="text" placeholder="请输入验证码" id="verifyCode" v-model.trim="verifyCode">
         </div>
         <div class="form_item">
-            <label for="password">登录密码</label>
-            <input type="password" placeholder="请输入登录密码" id="password" v-model.trim="password">
+            <label for="password">新密码</label>
+            <input type="password" placeholder="请输入新登录密码" id="password" v-model.trim="password">
         </div>
         <div class="form_item">
-            <label for="repeatPassword">重复密码</label>
-            <input type="password" placeholder="重复输入登录密码" id="repeatPassword" v-model.trim="repeatPassword">
+            <label for="repeatPassword">重复新密码</label>
+            <input type="password" placeholder="重复输入新登录密码" id="repeatPassword" v-model.trim="repeatPassword">
         </div>
-        <div class="form_item">
-            <label for="inviteCode">邀请码(选填)</label>
-            <input type="text" placeholder="请输入邀请码" id="inviteCode" v-model.trim="inviteCode">
-        </div>
-        <label for="remember" class="remember">
-            <input type="checkbox" id="remember" v-model="confirm"/>
-            <span>同意《嘻唰唰-创客加盟协议》</span>
-        </label>
-        <button class="sub" @click="register">提交申请</button>
+        <button class="sub" @click="reset">重置密码</button>
     </div>
 </template>
 
@@ -47,10 +39,10 @@
         },
         methods: {
             /**
-             * 注册
+             * 重置密码
              * @returns {boolean}
              */
-            register() {
+            reset() {
                 if (!this.checkDataComplete()) {
                     return false;
                 }
@@ -100,11 +92,6 @@
              * @returns {boolean}
              */
             checkDataComplete() {
-                if (!this.confirm) {
-                    Toast("请先勾选 '同意协议'");
-                    return false;
-                }
-
                 if (!/^1[3-9][2-9]\d{8}/.test(this.tel)) {
                     Toast('手机号码不合法');
                     return false;
@@ -196,25 +183,6 @@
         margin-top: -0.06rem;
         margin-left: 0.15rem;
         cursor: pointer;
-    }
-
-    .remember {
-        display: block;
-        font: 0.24rem "Microsoft YaHei";
-        color: #323232;
-        margin-top: 0.24rem;
-        overflow: hidden;
-    }
-
-    .remember input[type='checkbox'] {
-        margin-left: 0.15rem;
-        float: left;
-        display: block;
-        margin-top: 0.06rem;
-    }
-
-    .remember span {
-        margin-left: 0.3rem;
     }
 
     .sub {

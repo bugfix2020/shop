@@ -11,7 +11,7 @@
             <div>
                 <i class="tel_icon"></i>
                 <div class="input_contain">
-                    <input type="text" name="tel" autocapitalize="off" v-model.trim="tel" placeholder="输入手机号">
+                    <input type="text" name="tel" autocapitalize="off" v-model.number.trim="tel" placeholder="输入手机号">
                 </div>
             </div>
             <div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <label for="remember" class="remember">
-                <input type="checkbox" id="remember"/>
+                <input type="checkbox" id="remember" v-model="remember"/>
                 <span>记住用户名和密码</span>
             </label>
             <button class="sub" @click="login">登录</button>
@@ -36,6 +36,8 @@
 </template>
 
 <script>
+    import {Toast} from "mint-ui";
+
     export default {
         name: "login",
         data() {
@@ -48,12 +50,19 @@
         methods: {
             login() {
                 //登录
+                if (!this.checkDataComplete()) {
+                    return false;
+                }
+                alert('登录');
             },
             clearCache() {
                 //清理缓存
             },
+            /**
+             * 路由 - 进入找回密码页
+             */
             redirectResetPassword() {
-                //忘记密码
+                this.$router.push('/resetPassword')
             },
             register() {
                 //创客入驻
@@ -61,6 +70,42 @@
             },
             merchantLogin() {
                 //商家登录
+                setTimeout(() => {
+                    alert('清除缓存成功')
+                }, Math.random() * 10000)
+            },
+            /**
+             * 检查数据完整性
+             * @returns {boolean}
+             */
+            checkDataComplete() {
+                if (!this.tel) {
+                    Toast('手机号码不能为空');
+                    return false;
+                }
+
+                if (!this.password) {
+                    Toast('密码不能为空');
+                    return false;
+                }
+
+                if (this.remember) {
+                    let data = {tel: this.tel, password: this.password};
+                    localStorage.setItem('userInfo', JSON.stringify(data));
+                } else {
+                    localStorage.removeItem('userInfo');
+                }
+
+                return true;
+            }
+        },
+        created() {
+            let userInfo = localStorage.getItem('userInfo');
+            if (userInfo) {
+                let {tel, password} = JSON.parse(userInfo);
+                this.tel = tel;
+                this.password = password;
+                this.remember = true;
             }
         }
     }
