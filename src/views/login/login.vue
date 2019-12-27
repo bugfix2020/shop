@@ -115,7 +115,7 @@
              * @private
              */
             __init() {
-                let identity = this.$route.query.identity;
+                let identity = this.$route.query.identity || 'user';
                 this.redirectCurrentUrl = identity;
 
                 if (identity === 'merchant') {
@@ -129,11 +129,10 @@
                 }
 
                 //设置主题色
-                identity = identity.toString();
-                document.getElementById('header').className = identity;
-                document.getElementById('sub').className = 'sub_' + identity;
-                document.getElementById('register').className = 'register_' + identity;
-                document.getElementById('login').className = 'login_' + identity;
+                document.getElementById('header').className = this.redirectCurrentUrl;
+                document.getElementById('sub').className = 'sub_' + this.redirectCurrentUrl;
+                document.getElementById('register').className = 'register_' + this.redirectCurrentUrl;
+                document.getElementById('login').className = 'login_' + this.redirectCurrentUrl;
 
                 //登录界面获取用户账号密码
                 let key = this.redirectCurrentUrl + 'Info';

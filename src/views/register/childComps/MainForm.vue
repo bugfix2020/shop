@@ -81,7 +81,7 @@
                 el.style.cursor = 'not-allowed';
 
                 //指定倒计时时间
-                that.waitTime = 1;
+                that.waitTime = 60;
                 let handle = setInterval(function () {
                     that.waitTime--;
                     if (that.waitTime == 0) {

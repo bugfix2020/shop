@@ -15,14 +15,22 @@
 
     export default {
         name: "register",
+        data() {
+            return {
+                redirectCurrentUrl: ''
+            }
+        },
         components: {
             NavBar,
             MainForm
         },
         methods: {
             redirectLogin() {
-                this.$router.push('/login');
+                this.$router.push('/login?identity=' + this.redirectCurrentUrl);
             }
+        },
+        mounted() {
+            this.redirectCurrentUrl = this.$route.query.identity;
         }
     }
 </script>

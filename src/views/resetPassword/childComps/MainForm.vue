@@ -17,7 +17,7 @@
             <label for="repeatPassword">重复新密码</label>
             <input type="password" placeholder="重复输入新登录密码" id="repeatPassword" v-model.trim="repeatPassword">
         </div>
-        <button class="sub" @click="reset">重置密码</button>
+        <button id="sub" @click="reset">重置密码</button>
     </div>
 </template>
 
@@ -80,9 +80,10 @@
                         //倒计时结束 清除定时器
                         clearInterval(handle);
                         //恢复样式
-                        el.style.color = '#fff';
-                        el.style.backgroundColor = '#3696ed';
+                        el.className = 'send_sms_' + that.redirectCurrentUrl;
+                        el.style = null;
                         el.style.cursor = 'pointer';
+
                         return false;
                     }
                 }, 1000);
@@ -118,6 +119,11 @@
                 }
 
                 return true;
+            },
+            __init() {
+                this.redirectCurrentUrl = this.$route.query.identity;
+                document.getElementById('send_sms').className = 'send_sms_' + this.redirectCurrentUrl;
+                document.getElementById('sub').className = 'sub_' + this.redirectCurrentUrl;
             }
         },
         filters: {
@@ -127,6 +133,9 @@
                 }
                 return '  (' + time + ')秒';
             }
+        },
+        mounted() {
+            this.__init();
         }
     }
 </script>
@@ -174,8 +183,6 @@
         width: 2.2rem;
         height: 0.6rem;
         line-height: 0.6rem !important;
-        color: #fff; /*#999*/
-        background-color: #3696ed; /*#d8d8d8*/
         border: none;
         outline: none;
         border-radius: 0.1rem;
@@ -185,17 +192,40 @@
         cursor: pointer;
     }
 
-    .sub {
+    /*主题色*/
+    .send_sms_user {
+        color: #fff; /*#999*/
+        background-color: #3696ed; /*#d8d8d8*/
+    }
+
+    /*主题色*/
+    .send_sms_merchant {
+        color: #000; /*#999*/
+        background-color: #fecf29; /*#d8d8d8*/
+    }
+
+    #sub {
         display: block;
         width: 5.7rem;
         height: 1rem;
         margin: 0.6rem auto 0 auto;
         line-height: 1rem !important;
-        color: #fff;
-        background-color: #3696ed;
         border: none;
         border-radius: 0.15rem;
         font: 0.33rem "Microsoft YaHei";
         outline: none;
+    }
+
+
+    /*主题色*/
+    .sub_user {
+        color: #fff;
+        background-color: #3696ed;
+    }
+
+    /*主题色*/
+    .sub_merchant {
+        color: #000;
+        background-color: #fecf29;
     }
 </style>
