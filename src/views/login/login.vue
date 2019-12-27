@@ -4,7 +4,7 @@
             <p>欢迎登录</p>
             <p>嘻唰唰创客平台</p>
         </div>
-        <div class="merchant_login">
+        <div class="merchant_login" @click="merchantLogin">
             <p>商户登录 &gt;</p>
         </div>
         <div class="form">
@@ -57,6 +57,10 @@
             },
             register() {
                 //创客入驻
+                this.$router.push('/register');
+            },
+            merchantLogin() {
+                //商家登录
             }
         }
     }

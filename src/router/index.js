@@ -5,9 +5,10 @@ import VueRouter from 'vue-router';
 //安装vue-route
 Vue.use(VueRouter);
 
-//懒加载 首页
+//懒加载组件
 const index = () => import('@/views/index/index');
 const login = () => import('@/views/login/login');
+const register = () => import('@/views/register/register');
 
 //设置routes对象 映射路由关系
 const routes = [
@@ -29,6 +30,14 @@ const routes = [
         component: login,
         meta: {
             title: '登录'
+        }
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: register,
+        meta: {
+            title: '创客入驻'
         }
     }
 ];
