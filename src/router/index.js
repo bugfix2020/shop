@@ -5,8 +5,9 @@ import VueRouter from 'vue-router';
 //安装vue-route
 Vue.use(VueRouter);
 
-//todo 懒加载方式引入所需组件
+//懒加载 首页
 const index = () => import('@/views/index/index');
+const login = () => import('@/views/login/login');
 
 //设置routes对象 映射路由关系
 const routes = [
@@ -20,6 +21,14 @@ const routes = [
         component: index,
         meta: {
             title: '首页'
+        }
+    },
+    {
+        name: 'login',
+        path: '/login',
+        component: login,
+        meta: {
+            title: '登录'
         }
     }
 ];
