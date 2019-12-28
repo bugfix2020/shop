@@ -2,7 +2,6 @@
     <div id="contain">
         <nav-bar>
             <p slot="left"></p>
-            <p slot="center">{{$route.meta.title}}</p>
             <p slot="right" @click="redirectLogin">登录</p>
         </nav-bar>
         <main-form></main-form>

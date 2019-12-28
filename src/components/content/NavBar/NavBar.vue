@@ -2,7 +2,7 @@
     <div id="nav_bar_contain" class="nav_bar_contain_user">
         <div id="nav_bar_contain_inner">
             <slot name="left"></slot>
-            <slot name="center"></slot>
+            <slot name="center"><p>{{$route.meta.title}}</p></slot>
             <slot name="right"></slot>
         </div>
     </div>
