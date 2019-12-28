@@ -6,8 +6,6 @@
 </template>
 
 <script>
-    // import {Toast} from "mint-ui";
-
     import MainHeader from "@/views/login/childComps/MainHeader";
     import MainForm from "@/views/login/childComps/MainForm";
 
