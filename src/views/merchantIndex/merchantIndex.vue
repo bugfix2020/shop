@@ -1,38 +1,51 @@
 <template>
     <div id="contain">
         <nav-bar>
-            <p slot="left"></p>
-            <p slot="center">{{merchantName + $route.meta.title}}</p>
-            <p slot="right"></p>
+            <p slot="left"/>
+            <p slot="center">{{merchantData.merchantName + $route.meta.title}}</p>
+            <p slot="right"/>
         </nav-bar>
+        <main-header :merchantData="merchantData"/>
+        <main-base-info :merchantData="merchantData"/>
     </div>
 </template>
 
 <script>
     import NavBar from "@/components/content/NavBar/NavBar";
+    import MainHeader from "@/views/merchantIndex/childComps/MainHeader";
+    import MainBaseInfo from "@/views/merchantIndex/childComps/MainBaseInfo";
 
     export default {
         name: "merchantIndex",
         data() {
             return {
-                merchantName: ''
+                merchantData: {},
             }
         },
         components: {
-            NavBar
+            NavBar,
+            MainHeader,
+            MainBaseInfo
         },
         created() {
-            this.merchantName = '拼多多';
+            this.merchantData = {
+                id: 1,
+                name: '王峰 (wangfeng)',
+                shopsNum: 1,
+                goodsNum: 22,
+                registerDate: '2019-11-11',
+                merchantName: '拼多多',
+                tel: '18833334444',
+                Bond: 50000
+            };
         }
     }
 </script>
-
+<!--merchant_icon.png-->
 <style scoped>
-    #header {
-        width: 100%;
-        height: 3.59rem;
-        margin-bottom: 0.8rem;
-        background-size: cover;
-        background: url("~@/assets/img/login/header_bg_merchant.png") no-repeat;
+    #contain {
+        width: 7.5rem;
+        overflow: hidden;
+        position: relative;
     }
 </style>
