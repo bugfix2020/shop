@@ -5,7 +5,7 @@
         </div>
         <div class="shops_info_item" v-for="(item,index) in shopsData" :key="item.id">
             <label>{{fullName(item.name,index)}}</label>
-            <input type="number" :value="item.num" placeholder="请输入限制金额">
+            <input type="number" :value="item.num" placeholder="请输入限制金额" class="num" :data-id="item.id">
         </div>
         <button class="button" id="sub" @click="update">更新资料</button>
         <button class="button" id="details" @click="redirectDetails">资金明细</button>
@@ -26,6 +26,15 @@
         methods: {
             update() {
                 //更新信息
+                let elementList = document.getElementsByClassName('num');
+                if (elementList.length > 0) {
+                    let data = [];
+                    elementList.forEach(item => {
+                        data[item.getAttribute('data-id')] = item.value;
+                    });
+                    //这里这样写是因为数组前面会多出一个empty 具体是什么原因还不清楚
+                    data.shift();
+                }
                 alert('更新信息');
             },
             redirectDetails() {
