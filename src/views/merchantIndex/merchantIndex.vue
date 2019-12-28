@@ -7,6 +7,7 @@
         </nav-bar>
         <main-header :merchantData="merchantData"/>
         <main-base-info :merchantData="merchantData"/>
+        <main-shops-info :shopsData="shopsData"/>
     </div>
 </template>
 
@@ -14,18 +15,21 @@
     import NavBar from "@/components/content/NavBar/NavBar";
     import MainHeader from "@/views/merchantIndex/childComps/MainHeader";
     import MainBaseInfo from "@/views/merchantIndex/childComps/MainBaseInfo";
+    import MainShopsInfo from "@/views/merchantIndex/childComps/MainShopsInfo";
 
     export default {
         name: "merchantIndex",
         data() {
             return {
                 merchantData: {},
+                shopsData: []
             }
         },
         components: {
             NavBar,
             MainHeader,
-            MainBaseInfo
+            MainBaseInfo,
+            MainShopsInfo
         },
         created() {
             this.merchantData = {
@@ -38,6 +42,11 @@
                 tel: '18833334444',
                 Bond: 50000
             };
+
+            this.shopsData = [
+                {id: 1, name: '洋洋明媚箱包店', num: 10000},
+                {id: 2, name: '天天文具店', num: 0}
+            ];
         }
     }
 </script>
