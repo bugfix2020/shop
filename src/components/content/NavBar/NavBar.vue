@@ -12,7 +12,8 @@
     export default {
         name: "NavBarItem",
         mounted() {
-            let identity = this.$route.query.identity.toString();
+            //这个组件特殊 如果没有检测到参数 默认设置成商户的主题色
+            let identity = this.$route.query.identity || 'merchant';
             document.getElementById('nav_bar_contain').className = 'nav_bar_contain_' + identity;
             document.getElementById('nav_bar_contain_inner').className = 'nav_bar_contain_inner_' + identity;
         }

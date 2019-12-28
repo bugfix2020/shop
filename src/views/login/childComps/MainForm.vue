@@ -42,19 +42,20 @@
             }
         },
         methods: {
+            /**
+             * 用户登录
+             */
             login() {
-                //登录
                 if (!this.checkDataComplete()) {
                     return false;
                 }
-                confirm('登录?');
+
                 //todo 这里根据接口返回的身份信息跳转
-                // eslint-disable-next-line no-constant-condition
-                if (true) {
-                    this.$router.replace('/index');
-                } else {
-                    this.$router.replace('')
+                let url = '/index';
+                if (this.redirectCurrentUrl === 'merchant') {
+                    url = 'merchantIndex'
                 }
+                this.$router.replace(url);
             },
             clearCache() {
                 //清理缓存
