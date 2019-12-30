@@ -36,7 +36,7 @@
              * 路由 - 资金明细
              */
             redirectDetails() {
-
+                this.$router.push('/capitalDetails');
             }
         }
     }

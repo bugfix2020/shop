@@ -6,22 +6,21 @@
             </p>
             <p slot="right"></p>
         </nav-bar>
-        <main-base-info/>
-        <main-form/>
+        <main-search :revenue="revenue" :expend="expend"/>
     </div>
 </template>
 
 <script>
     import NavBar from "@/components/content/NavBar/NavBar";
-    import MainBaseInfo from "@/views/recharge/childComps/MainBaseInfo";
-    import MainForm from "@/views/recharge/childComps/MainForm";
+    import MainSearch from "@/views/capitalDetails/childComps/MainSearch";
 
     export default {
-        name: "recharge",
-        components: {
-            NavBar,
-            MainBaseInfo,
-            MainForm
+        name: "capitalDetails",
+        data() {
+            return {
+                revenue: 0,
+                expend: 0
+            }
         },
         methods: {
             /**
@@ -31,9 +30,19 @@
                 history.go(-1);
             }
         },
+        components: {
+            NavBar,
+            MainSearch
+        },
+        created() {
+            this.revenue = 2000;
+            this.expend = 1288;
+        }
     }
 </script>
 
 <style scoped>
-
+    #contain {
+        background-color: #eef3f6;
+    }
 </style>

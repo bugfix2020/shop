@@ -37,9 +37,11 @@
                 }
                 alert('更新信息');
             },
+            /**
+             * 路由 - 资金详情
+             */
             redirectDetails() {
-                //资金详情
-                alert('资金详情');
+                this.$router.push('/capitalDetails');
             }
         },
         computed: {
