@@ -28,6 +28,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 npm i element-ui -S
 npm install vue-awesome-swiper --save
 npm install mint-ui -S
+npm i vue-clipboard2
 ```
 
 

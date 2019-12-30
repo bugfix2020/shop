@@ -32,8 +32,11 @@
             }
         },
         methods: {
+            /**
+             * 路由 - 充值保证金
+             */
             redirectRecharge() {
-                alert('充值保障金');
+                this.$router.push('recharge');
             }
         }
     }

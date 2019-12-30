@@ -24,6 +24,9 @@
             MainForm
         },
         methods: {
+            /**
+             * 路由 - 登录
+             */
             redirectLogin() {
                 this.$router.push('/login?identity=' + this.redirectCurrentUrl);
             }

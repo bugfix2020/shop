@@ -63,6 +63,7 @@
 
     #nav_bar_contain_inner > p:nth-of-type(2) {
         text-align: center;
+        flex: 2;
     }
 
     #nav_bar_contain_inner > p:nth-of-type(3) {

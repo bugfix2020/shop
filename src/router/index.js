@@ -11,6 +11,7 @@ const login = () => import('@/views/login/login');
 const register = () => import('@/views/register/register');
 const resetPassword = () => import('@/views/resetPassword/resetPassword');
 const merchantIndex = () => import('@/views/merchantIndex/merchantIndex');
+const recharge = () => import('@/views/recharge/recharge');
 
 //设置routes对象 映射路由关系
 const routes = [
@@ -56,6 +57,14 @@ const routes = [
         component: merchantIndex,
         meta: {
             title: '商户管理'
+        }
+    },
+    {
+        name: 'recharge',
+        path: '/recharge',
+        component: recharge,
+        meta: {
+            title: '商户保证金充值'
         }
     }
 ];
