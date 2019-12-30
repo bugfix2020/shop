@@ -7,18 +7,21 @@
             <p slot="right"></p>
         </nav-bar>
         <main-base-info/>
+        <main-form/>
     </div>
 </template>
 
 <script>
     import NavBar from "@/components/content/NavBar/NavBar";
     import MainBaseInfo from "@/views/recharge/childComps/MainBaseInfo";
+    import MainForm from "@/views/recharge/childComps/MainForm";
 
     export default {
         name: "recharge",
         components: {
             NavBar,
-            MainBaseInfo
+            MainBaseInfo,
+            MainForm
         },
         methods: {
             /**
