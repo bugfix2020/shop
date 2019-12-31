@@ -8,9 +8,8 @@
         </div>
     </div>
 </template>
-
 <script>
-    import {Toast} from 'mint-ui';
+    import copy from "@/common/copy";
 
     export default {
         name: "MainBaseInfo",
@@ -19,7 +18,7 @@
                 bankName: '中国建设银行',
                 bankAddress: '贵州省贵阳市建设路支行',
                 bankAccount: '贵州省裕耀乾福文化传媒有限公司',
-                bankNumber: 666210288997452
+                bankNumber: 666210288997452,
             }
         },
         methods: {
@@ -28,14 +27,16 @@
              * @param text
              */
             copyBankInfo(text) {
+                copy(text);
+
                 //vue-clipboard2坑的一逼 复制之后不报错 剪切板也没东西 还不如原生
-                let tmpInput = document.createElement('textarea');
-                tmpInput.value = text;
-                document.body.appendChild(tmpInput);
-                tmpInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tmpInput);
-                Toast('复制成功！');
+                //     let tmpInput = document.createElement('textarea');
+                //     tmpInput.value = text;
+                //     document.body.appendChild(tmpInput);
+                //     tmpInput.select();
+                //     document.execCommand('copy');
+                //     document.body.removeChild(tmpInput);
+                //     Toast('复制成功！');
             }
         }
     }

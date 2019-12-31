@@ -13,6 +13,7 @@ const resetPassword = () => import('@/views/resetPassword/resetPassword');
 const merchantIndex = () => import('@/views/merchantIndex/merchantIndex');
 const recharge = () => import('@/views/recharge/recharge');
 const capitalDetails = () => import('@/views/capitalDetails/capitalDetails');
+const detailsInfo = () => import('@/views/detailsInfo/detailsInfo');
 
 //设置routes对象 映射路由关系
 const routes = [
@@ -74,6 +75,14 @@ const routes = [
         component: capitalDetails,
         meta: {
             title: '资金明细记录'
+        }
+    },
+    {
+        name: 'detailsInfo',
+        path: '/detailsInfo',
+        component: detailsInfo,
+        meta: {
+            title: '交易详情'
         }
     }
 ];

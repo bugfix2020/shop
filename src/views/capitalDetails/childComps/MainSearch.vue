@@ -32,7 +32,7 @@
             <p>{{month == currentMonth ? '本月' : currentMonth + '月'}}</p>
         </div>
         <div class="list">
-            <div class="list_item">
+            <div class="list_item" v-for="i in 10" :key="i" @click="redirectDetailsInfo(i)">
                 <div>
                     <p>保证金充值</p>
                     <p>2019-12-30 20:19:45</p>
@@ -79,12 +79,25 @@
             }
         },
         methods: {
+            /**
+             * 选择月份插件弹层状态关闭或开启 true|false
+             */
             showSheet() {
                 this.sheetVisible = !this.sheetVisible;
             },
-            chooseMonth(e) {
+            /**
+             * 用户选择月份
+             * @param month
+             */
+            chooseMonth(month) {
                 //todo 发请求
-                this.currentMonth = e.value;
+                this.currentMonth = month.value;
+            },
+            /**
+             * 路由 - 跳转到交易详情
+             */
+            redirectDetailsInfo(id) {
+                this.$router.push('/detailsInfo?id=' + id);
             }
         },
         props: {

@@ -6,6 +6,7 @@
 
 <script>
     import "@/assets/js/fontsizeset";
+
     export default {
         name: 'app',
         components: {},
@@ -20,6 +21,10 @@
         padding: 0;
         margin: 0;
         line-height: 0;
+    }
+
+    html, body, #app {
+        height: 100%;
     }
 
     ul {

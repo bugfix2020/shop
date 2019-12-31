@@ -15,14 +15,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Mint from 'mint-ui';
 import 'mint-ui/lib/style.css';
 
-//引入clipboard
-import VueClipboard from 'vue-clipboard2';
-
-VueClipboard.config.autoSetContainer = true;
-
 Vue.use(ElementUI);
 Vue.use(Mint);
-Vue.use(VueClipboard);
 
 Vue.config.productionTip = false;
 
