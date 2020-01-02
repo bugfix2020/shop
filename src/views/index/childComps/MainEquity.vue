@@ -20,7 +20,7 @@
                         img: require('@/assets/img/index/equity/equity_icon_1.png'),
                         style: 'width:0.57rem;height:0.57rem',
                         text: '我的任务',
-                        path: '1'
+                        path: '/myTask?identity=user'
                     },
                     {
                         img: require('@/assets/img/index/equity/equity_icon_2.png'),

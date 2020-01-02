@@ -14,6 +14,7 @@ const merchantIndex = () => import('@/views/merchantIndex/merchantIndex');
 const recharge = () => import('@/views/recharge/recharge');
 const capitalDetails = () => import('@/views/capitalDetails/capitalDetails');
 const detailsInfo = () => import('@/views/detailsInfo/detailsInfo');
+const myTask = () => import('@/views/myTask/myTask');
 
 //设置routes对象 映射路由关系
 const routes = [
@@ -83,6 +84,14 @@ const routes = [
         component: detailsInfo,
         meta: {
             title: '交易详情'
+        }
+    },
+    {
+        name: 'myTask',
+        path: '/myTask',
+        component: myTask,
+        meta: {
+            title: '我的任务'
         }
     }
 ];

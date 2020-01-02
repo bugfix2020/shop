@@ -9,10 +9,6 @@
 </template>
 
 <script>
-    //三方UI组件
-    import {Toast} from 'mint-ui';
-
-    //自定义组件
     import MainShare from "@/views/index/childComps/MainShare";
     import MainEquity from "@/views/index/childComps/MainEquity";
     import MainNotice from "@/views/index/childComps/MainNotice";
@@ -85,7 +81,7 @@
         },
         methods: {
             share() {
-                Toast({
+                this.$toast({
                     message: '分享了',
                     duration: 1000
                 });

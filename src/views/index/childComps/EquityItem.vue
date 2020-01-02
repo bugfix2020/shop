@@ -8,17 +8,15 @@
 </template>
 
 <script>
-    import {Toast} from 'mint-ui';
-
     export default {
         name: "EquityItem",
         methods: {
+            /**
+             * 路由 - 跳转页面
+             * @param path 页面地址
+             */
             redirectTo(path) {
-                Toast({
-                    message: '路径' + path,
-                    iconClass: 'icon icon-success',
-                    duration: 1500
-                });
+                this.$router.push(path);
             }
         },
         props: {
