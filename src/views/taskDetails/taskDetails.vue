@@ -8,18 +8,21 @@
             <p slot="right"></p>
         </nav-bar>
         <main-title/>
+        <main-item/>
     </div>
 </template>
 
 <script>
     import NavBar from "@/components/content/NavBar/NavBar";
     import MainTitle from "@/views/taskDetails/childComps/MainTitle";
+    import MainItem from "@/views/taskDetails/childComps/MainItem";
 
     export default {
         name: "taskDetails",
         components: {
             NavBar,
-            MainTitle
+            MainTitle,
+            MainItem
         },
         methods: {
             /**
