@@ -1,6 +1,6 @@
 <template>
     <div class="title_contain">
-        <div class="title_inner">
+        <div class="title_inner" v-if="!isStartTask">
             <div>
                 <p class="task_name">拼多多任务</p>
                 <p class="line">|</p>
@@ -11,12 +11,25 @@
                 <p class="store_icon">商</p>
             </div>
         </div>
+        <div class="title_inner review" v-else>
+            <div>
+                <p>正在浏览商品关键字搜索页....</p>
+                <p>倒计时
+                    <span style="color:#d22f1c;">6</span> 秒</p>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "MainTitle"
+        name: "MainTitle",
+        props: {
+            isStartTask: {
+                type: Boolean,
+                default: false
+            }
+        }
     }
 </script>
 
@@ -67,7 +80,7 @@
     }
 
     .title_contain .title_inner > div:last-of-type p {
-        float:right;
+        float: right;
     }
 
     .title_contain .store_icon {
@@ -84,4 +97,20 @@
         color: #555555;
         padding-left: 0.15rem;
     }
+
+    .review div {
+        display: flex;
+    }
+
+    .review div p {
+        flex: 1;
+        text-align: left;
+        font-size: 0.25rem;
+        color: #4a4a4a;
+    }
+
+    .review div p:last-of-type {
+        text-align: right;
+    }
+
 </style>

@@ -7,8 +7,8 @@
             </p>
             <p slot="right"></p>
         </nav-bar>
-        <main-title/>
-        <main-item/>
+        <main-title :isStartTask="isStartTask"/>
+        <main-item @startTask="startTask"/>
     </div>
 </template>
 
@@ -19,6 +19,11 @@
 
     export default {
         name: "taskDetails",
+        data() {
+            return {
+                isStartTask: false
+            }
+        },
         components: {
             NavBar,
             MainTitle,
@@ -30,14 +35,17 @@
              */
             redirectMyTask() {
                 history.go(-1);
-            }
+            },
+            startTask(flag) {
+                this.isStartTask = flag;
+            },
         }
     }
 </script>
 
 <style scoped>
-    #contain{
+    #contain {
         background-color: #eef3f6;
-        height: 100%;
+        min-height: 100%;
     }
 </style>
