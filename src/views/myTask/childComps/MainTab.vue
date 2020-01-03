@@ -70,8 +70,8 @@
             /**
              * 路由 - 跳转至任务详情
              */
-            viewTask() {
-
+            viewTask(id) {
+                this.$router.push('/taskDetails?identity=user&id=' + id);
             }
         },
         props: {
