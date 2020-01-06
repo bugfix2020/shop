@@ -35,7 +35,6 @@
              */
             redirectIndex() {
                 history.go(-1);
-                this.$router.push('/');
             }
         },
         created() {
