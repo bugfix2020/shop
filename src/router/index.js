@@ -16,6 +16,9 @@ const capitalDetails = () => import('@/views/capitalDetails/capitalDetails');
 const detailsInfo = () => import('@/views/detailsInfo/detailsInfo');
 const myTask = () => import('@/views/myTask/myTask');
 const taskDetails = () => import('@/views/taskDetails/taskDetails');
+const taskPay = () => import('@/views/taskPay/taskPay');
+const page404 = () => import('@/views/page404/page404');
+
 
 //设置routes对象 映射路由关系
 const routes = [
@@ -102,6 +105,26 @@ const routes = [
         meta: {
             title: '任务详情'
         }
+    },
+    {
+        name: 'taskPay',
+        path: '/taskPay',
+        component: taskPay,
+        meta: {
+            title: '购物任务支付'
+        }
+    },
+    {
+        name: 'page404',
+        path: '/page404',
+        component: page404,
+        meta: {
+            title: '页面不存在'
+        }
+    },
+    {
+        path: '*',
+        redirect:'/page404'
     }
 ];
 
