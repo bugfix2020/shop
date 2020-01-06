@@ -67,6 +67,18 @@
                     reward: 72
                 }
             ];
+
+            let newTaskData = [{
+                id: 30294,
+                source: '拼多多任务',
+                type: '购物',
+                publishDate: '2019-11-15 19:24',
+                orderNum: 20191115004058,
+                price: 988,
+                reward: 72
+            }];
+
+            this.taskData = this.$_.concat(this.taskData,newTaskData);
         }
     }
 </script>

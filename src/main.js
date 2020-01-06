@@ -20,8 +20,16 @@ Vue.use(Mint);
 
 Vue.config.productionTip = false;
 
+//引入lodash 并挂载到Vue
+Vue.prototype.$_ = require('lodash');
+Vue.prototype.$fp = require('lodash/fp');
+Vue.prototype.$array = require('lodash/array');
+Vue.prototype.$object = require('lodash/fp/object');
+Vue.prototype.$at = require('lodash/at');
+Vue.prototype.$curryN = require('lodash/fp/curryN');
+
 new Vue({
     render: h => h(App),
     router,
     store,
-}).$mount('#app')
+}).$mount('#app');
