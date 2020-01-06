@@ -23,8 +23,13 @@
         line-height: 0;
     }
 
+    html {
+        /*height: 100%;*/
+    }
+
     html, body, #app {
         min-height: 100%;
+        height: 100%;
     }
 
     ul {

@@ -35,6 +35,7 @@
              */
             redirectIndex() {
                 history.go(-1);
+                this.$router.push('/');
             }
         },
         created() {
@@ -74,6 +75,6 @@
 <style scoped>
     #contain {
         background-color: #eef3f6;
-        height: 100%;
+        min-height: 100%;
     }
 </style>
