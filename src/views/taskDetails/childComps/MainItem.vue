@@ -20,8 +20,8 @@
                 </p>
             </div>
             <div class="task_money_info">
-                <p>商品价格<span class="money">150.00元</span></p>
-                <p>任务佣金<span class="money">9.00元</span></p>
+                <p>商品价格:<span class="money">150.00元</span></p>
+                <p>任务佣金:<span class="money">9.00元</span></p>
             </div>
             <div class="task_step_info">
                 <div>
