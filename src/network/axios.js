@@ -6,9 +6,11 @@ import axios from 'axios';
 
 //导出方法
 export default function request(option) {
+    // const baseURL = "http://pdd.698zq.com/";
+    const baseURL = "/api";
     // 1.创建axios的实例
     const instance = axios.create({
-        baseURL: 'http://123.207.32.32:8000',
+        baseURL,
         timeout: 5000
     });
 

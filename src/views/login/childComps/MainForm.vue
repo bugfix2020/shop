@@ -3,7 +3,7 @@
         <div>
             <i class="tel_icon"></i>
             <div class="input_contain">
-                <input type="text" name="tel" autocapitalize="off" v-model.number.trim="tel" placeholder="输入手机号">
+                <input type="text" name="tel" autocapitalize="off" v-model.number.trim="mobile" placeholder="输入手机号">
             </div>
         </div>
         <div>
@@ -33,7 +33,7 @@
         name: "MainForm",
         data() {
             return {
-                tel: '',
+                mobile: '',
                 password: '',
                 remember: false,
                 currentIdentity: '',
@@ -51,11 +51,13 @@
                 }
 
                 //todo 这里根据接口返回的身份信息跳转
-                let url = '/index';
-                if (this.redirectCurrentUrl === 'merchant') {
-                    url = 'merchantIndex'
-                }
-                this.$router.replace(url);
+                // eslint-disable-next-line no-console
+                console.log(this.$parent.userLogin({mobile: this.mobile, password: this.password}));
+                // let url = '/index';
+                // if (this.redirectCurrentUrl === 'merchant') {
+                //     url = 'merchantIndex'
+                // }
+                // this.$router.replace(url);
             },
             clearCache() {
                 //清理缓存
@@ -78,7 +80,7 @@
              * @returns {boolean}
              */
             checkDataComplete() {
-                if (!this.tel) {
+                if (!this.mobile) {
                     Toast('手机号码不能为空');
                     return false;
                 }
@@ -90,7 +92,7 @@
 
                 let key = this.redirectCurrentUrl + 'Info';
                 if (this.remember) {
-                    let data = {tel: this.tel, password: this.password};
+                    let data = {mobile: this.mobile, password: this.password};
                     localStorage.setItem(key, JSON.stringify(data));
                 } else {
                     localStorage.removeItem(key);
@@ -120,12 +122,12 @@
                 let key = this.redirectCurrentUrl + 'Info';
                 let info = localStorage.getItem(key);
                 if (info) {
-                    let {tel, password} = JSON.parse(info);
-                    this.tel = tel;
+                    let {mobile, password} = JSON.parse(info);
+                    this.mobile = mobile;
                     this.password = password;
                     this.remember = true;
                 } else {
-                    this.tel = '';
+                    this.mobile = '';
                     this.password = '';
                     this.remember = false;
                 }

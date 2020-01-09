@@ -6,17 +6,24 @@
 </template>
 
 <script>
+    import {userLogin} from "@/network/login";
+
     import MainHeader from "@/views/login/childComps/MainHeader";
     import MainForm from "@/views/login/childComps/MainForm";
 
     export default {
         name: "login",
         data() {
-            return {}
+            return {
+                userLogin:null,
+            }
         },
         components: {
             MainHeader,
             MainForm
+        },
+        mounted(){
+            this.userLogin = userLogin;
         }
     }
 </script>
