@@ -3,8 +3,8 @@ module.exports = {
     outputDir:'dist',
     devServer: {
         open: true,
-        host: '*',
-        port: '*',
+        // host: '*',
+        // port: '*',
         proxy: {
             '/api': {
                 target: 'http://pdd.698zq.com/',
